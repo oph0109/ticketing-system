@@ -1,12 +1,12 @@
 package com.raygns.ticketingsystem.controllers;
 
 import com.raygns.ticketingsystem.entities.User;
+import com.raygns.ticketingsystem.repositories.UserRepository;
 import com.raygns.ticketingsystem.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,18 +17,32 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.findAllUsers();
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/all")
+    public @ResponseBody Iterable<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    @PutMapping
-    public void insertUser() {
-        User user = new User();
+    @PostMapping("/insert")
+    public @ResponseBody String addNewUser(
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String password,
+            @RequestParam String role
+    ) {
 
-        //todo instantiate with request body
+        User newUser = new User();
 
-        userService.insertUser(user);
+        newUser.setUserName(name);
+        newUser.setEmail(email);
+        newUser.setPassword(password);
+        newUser.setRole(role);
+
+        userRepository.save(newUser);
+
+        return "Saved";
     }
 
 }
