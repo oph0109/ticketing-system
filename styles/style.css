@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'lora-regular';
+    src: url("fonts/Lora/Lora-Regular.ttf");
+}
+
+#footer {
+    font-family: 'lora-regular';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.center {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'lora-regular';
+}
+
+#login-form-container {
+    width: 25%;
+    height: 500px;
+    border: 1px solid black;
+    border-radius: 5%;
+    margin-top: auto;
+}
+
+.login-form {
+    
+}
