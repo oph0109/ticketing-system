@@ -10,11 +10,12 @@
 <body>
     <main>
         <div class="center">
-            <h2>Welcome to your Ticketing System.</h2>
+            <h2 style="margin-top: 100px;">Welcome to your Ticketing System.</h2>
+            <h4>Please sign up/login below.</h4>
         </div>
 
-        <div id="login-form-container" class="center">
-            <form method="POST" action="http://localhost:8080/users/insert" class="login-form center">
+        <div id="signup-form-container" class="center">
+            <form method="POST" action="http://localhost:8080/users/insert" class="signup-form center">
                 <label for="name"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="name" required>
 
@@ -27,9 +28,11 @@
                 <label for="role"><b>Username</b></label>
                 <input type="text" placeholder="Enter Role" name="role" required>
             
-                <button type="submit" id="login-submit">Login</button>
+                <button type="submit" id="signup-submit">Sign Up</button>
             </form>
         </div>
+
+        <p id="signup-error"></p>
     </main>
 </body>
 
