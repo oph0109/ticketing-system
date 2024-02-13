@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet">
+    <script src="script.js"></script>
+    <title>Ticketing System</title>
+</head>
+<body>
+    <main>
+        <div class="center">
+            <h2 style="margin-top: 100px;">Welcome to your Ticketing System.</h2>
+            <h4>Please sign up/login below.</h4>
+        </div>
+
+        <div id="signup-form-container" class="center">
+            <form method="POST" action="http://localhost:8080/users/insert" class="signup-form center">
+                <label for="name"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="name" required>
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" required>
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <label for="role"><b>Username</b></label>
+                <input type="text" placeholder="Enter Role" name="role" required>
+            
+                <button type="submit" id="signup-submit">Sign Up</button>
+            </form>
+        </div>
+
+        <p id="signup-error"></p>
+    </main>
+</body>
+
+<div class="center">
+    <footer id="footer">
+        &#169 Raygn LLC. All rights reserved.
+    </footer>
+</div>
+
+</html>
