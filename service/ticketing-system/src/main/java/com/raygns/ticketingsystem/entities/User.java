@@ -6,6 +6,7 @@ import org.springframework.lang.NonNull;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "Users")
 public class User {
     public Long getUserID() {
         return UserID;
