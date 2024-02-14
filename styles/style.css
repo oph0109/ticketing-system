@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'lora-regular';
+    src: url("styles/fonts/Lora/Lora-Regular.ttf");
+}
+
+* {
+    font-family: 'lora-regular';
+}
+
+body {
+    background-color: #B0BC98;
+}
+
+#footer {
+    font-family: 'lora-regular';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.center {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'lora-regular';
+}
+
+#signup-form-container {
+    width: 25%;
+    height: 500px;
+    border: 1px solid #DBF9B8;
+    border-radius: 2%;
+    margin-top: auto;
+    background-color: #CAE2BC;
+    box-shadow: 7px 7px 7px;
+}
+
+.signup-form {
+    padding: 10px;
+    width: 50%;
+    max-height: 50%;
+    margin: auto;
+    margin-top: 25%;
+    text-align: center;
+
+}
+
+form input {
+    width: 50%;
+    padding: 5px;
+    border: 1px solid black;
+    margin-bottom: 30px;
+}
+
+form label {
+    background-color: #ffffff;
+
+    border-radius: 5px;
+}
