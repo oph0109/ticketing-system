@@ -1,15 +1,18 @@
 const prod = false;
 
 if (!prod) {
-  const BASE_API_CALL = "http://localhost:5502";
+  const BASE_API_CALL = "http://localhost:8080";
+  const MAIN_SITE = "http://localhost:5502/index.html"
 }
 
+//attaches an eventlistener to the signup button 
 document.getElementById("signup-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
   signupUser(new FormData(e.target));
 });
 
+//takes the form data from the 
 async function signupUser(formData) {
   const signupResult = await fetch(BASE_API_CALL + "/users/insert", {
     method: "POST",
