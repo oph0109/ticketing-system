@@ -1,0 +1,22 @@
+{
+  "name": "ticketing-system",
+  "version": "1.0.0",
+  "description": "spring boot / mysql backend definitely uses angular.js / tailwind frontend",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oph0109/ticketing-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oph0109/ticketing-system/issues"
+  },
+  "homepage": "https://github.com/oph0109/ticketing-system#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
