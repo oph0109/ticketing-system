@@ -8,7 +8,8 @@
 }
 
 body {
-    background-color: #B0BC98;
+    background-color: #353333;
+    color: whitesmoke
 }
 
 #footer {
@@ -25,8 +26,14 @@ body {
     text-align: center;
 }
 
-h2 {
+h1 {
     font-family: 'lora-regular';
+    font-size: 80px;
+}
+
+h2{
+    font-family: 'lora-regular';
+    font-size: 20px;
 }
 
 #signup-form-container {
