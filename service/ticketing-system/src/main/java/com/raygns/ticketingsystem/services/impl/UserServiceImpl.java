@@ -30,6 +30,12 @@ public class UserServiceImpl implements UserService {
         findByEmail(user.getEmail())
                 .orElseThrow(() -> new RuntimeException("User already exists with this email :: " + user.getEmail()));
 
+
+        if(user.getRole() == null) {
+            user.setRole("USER");
+        }
+
+
         return user;
     }
 
