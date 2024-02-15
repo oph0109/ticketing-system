@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/oph0109/ticketing-system/issues"
   },
-  "homepage": "https://github.com/oph0109/ticketing-system#readme"
+  "homepage": "https://github.com/oph0109/ticketing-system#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
 }
