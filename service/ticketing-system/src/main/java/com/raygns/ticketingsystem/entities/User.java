@@ -19,13 +19,14 @@ public class User {
     @Column(name = "userid")
     private Long userId;
 
-    @Column(name = "name")
+
+    @Column(name = "name", updatable = false, nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "role")
