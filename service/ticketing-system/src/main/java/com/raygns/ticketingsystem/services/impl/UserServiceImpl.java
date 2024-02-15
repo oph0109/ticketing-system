@@ -26,6 +26,10 @@ public class UserServiceImpl implements UserService {
     public User createUser(User user) {
         // Additional logic before saving can be added here
         user.setUserId(userRepository.save(user).getUuid());
+
+        findByEmail(user.getEmail())
+                .orElseThrow(() -> new RuntimeException("User already exists with this email :: " + user.getEmail()));
+
         return user;
     }
 
@@ -45,6 +49,9 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(uuid)
                 .orElseThrow(() -> new RuntimeException("User not found for this id :: " + uuid));
 
+        findByEmail(userDetails.getEmail())
+                .orElseThrow(() -> new RuntimeException("User already exists with this email :: " + userDetails.getEmail()));
+
         user.setName(userDetails.getName());
         user.setEmail(userDetails.getEmail());
         user.setPassword(userDetails.getPassword());
@@ -58,5 +65,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUser(UUID uuid) {
         userRepository.deleteById(uuid);
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
