@@ -2,6 +2,7 @@ package com.raygns.ticketingsystem.controllers;
 
 import com.raygns.ticketingsystem.entities.ItemRelation;
 import com.raygns.ticketingsystem.services.ItemRelationService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class ItemRelationController {
 
     // Create a new item relation
     @PostMapping
+    @Operation(summary = "Get Sample", description = "Example get method")
     public ResponseEntity<ItemRelation> createItemRelation(@RequestBody ItemRelation itemRelation) {
         ItemRelation newItemRelation = itemRelationService.createItemRelation(itemRelation);
         return ResponseEntity.ok(newItemRelation);
