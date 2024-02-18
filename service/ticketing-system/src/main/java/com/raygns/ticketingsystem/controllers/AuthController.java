@@ -25,7 +25,24 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<UUID> login(@RequestBody LoginRequest loginRequest) {
+
+
+        System.out.println(loginRequest.getEmail());
+        System.out.println(loginRequest.getUsername());
+        System.out.println(loginRequest.getPassword());
+
         Optional<UUID> userUuid = userService.authenticate(loginRequest.getEmail(), loginRequest.getPassword());
-        return userUuid.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.badRequest().build());
+
+        if(!userUuid.isPresent()) {
+            userService.authenticate(loginRequest.getUsername(), loginRequest.getPassword());
+        }
+
+
+        if (userUuid.isPresent()) {
+            return ResponseEntity.ok(userUuid.get());
+        } else {
+            // Consider using a more appropriate status code based on your security practices
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

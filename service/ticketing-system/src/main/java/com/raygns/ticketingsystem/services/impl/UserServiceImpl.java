@@ -67,8 +67,11 @@ public class UserServiceImpl implements UserService {
 
         user.setName(userDetails.getName());
         user.setEmail(userDetails.getEmail());
-        user.setPassword(userDetails.getPassword());
-        user.setRole(userDetails.getRole());
+        user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+
+        if(userDetails.getRole() != null) {
+            user.setRole(userDetails.getRole());
+        }
 
         return userRepository.save(user);
     }
@@ -84,9 +87,26 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    public Optional<UUID> authenticate(String email, String password) {
-        return userRepository.findByEmail(email)
+    public Optional<UUID> authenticate(String login, String password) {
+
+
+        Optional<UUID> uuid = userRepository.findByEmail(login)
                 .filter(user -> passwordEncoder.matches(password, user.getPassword()))
                 .map(User::getUuid);
+
+        if(uuid.isPresent()) {
+            return uuid;
+        } else {
+            uuid = userRepository.findByUsername(login)
+                    .filter(user -> passwordEncoder.matches(password, user.getPassword()))
+                    .map(User::getUuid);
+        }
+
+        return uuid;
+    }
+
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
