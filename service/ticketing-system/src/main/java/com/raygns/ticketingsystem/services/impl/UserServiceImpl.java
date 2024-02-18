@@ -4,6 +4,8 @@ import com.raygns.ticketingsystem.entities.User;
 import com.raygns.ticketingsystem.repositories.UserRepository;
 import com.raygns.ticketingsystem.services.UserService;
 import jakarta.transaction.Transactional;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +17,12 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -30,6 +34,8 @@ public class UserServiceImpl implements UserService {
         findByEmail(user.getEmail())
                 .orElseThrow(() -> new RuntimeException("User already exists with this email :: " + user.getEmail()));
 
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
 
         if(user.getRole() == null) {
             user.setRole("USER");
@@ -55,14 +61,14 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(uuid)
                 .orElseThrow(() -> new RuntimeException("User not found for this id :: " + uuid));
 
-        findByEmail(userDetails.getEmail())
-                .orElseThrow(() -> new RuntimeException("User already exists with this email :: " + userDetails.getEmail()));
+
+        System.out.println(userDetails.getName());
+
 
         user.setName(userDetails.getName());
         user.setEmail(userDetails.getEmail());
         user.setPassword(userDetails.getPassword());
         user.setRole(userDetails.getRole());
-        // Update more fields as needed
 
         return userRepository.save(user);
     }
@@ -76,5 +82,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public Optional<UUID> authenticate(String email, String password) {
+        return userRepository.findByEmail(email)
+                .filter(user -> passwordEncoder.matches(password, user.getPassword()))
+                .map(User::getUuid);
     }
 }

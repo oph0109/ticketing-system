@@ -24,8 +24,8 @@ public class TicketServiceImpl implements TicketService {
     @Override
     @Transactional
     public Ticket createTicket(Ticket ticket) {
-        // Additional logic before saving can be added here
-        return ticketRepository.save(ticket);
+        ticket.setTicketId(ticketRepository.save(ticket).getUuid());
+        return ticket;
     }
 
     @Override

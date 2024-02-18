@@ -18,4 +18,5 @@ public interface UserService {
 
     void deleteUser(UUID uuid);
     Optional<User> findByEmail(String email);
+    public Optional<UUID> authenticate(String username, String password);
 }
