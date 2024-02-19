@@ -8,11 +8,12 @@
     <title>Ticketing System</title>
     <link rel="logo" href="my-app/src/images/Raygun_Logo.png" type="image/x-icon">
 </head>
+
 <body>
     <main>
         <div id="welcome-tags" class="center">
             <h1>Raygn</h1>
-            <h2>Customized software for your business or personal needs</h2>
+            <h2>Customized software for your business or personal needs.</h2>
         </div>
 
         <div id="login-signup-form-container" class="center" >
@@ -22,15 +23,15 @@
 
             <form  id="login-signup-form" method="POST" action="" class="login-signup-form center">
 
-                <label for="email"><b>Email</b></label>
+                <!--<label for="email"><b>Email</b></label>-->
                 <input type="email" placeholder="Enter Email" name="email" >
 
-                <label for="password"><b>Password</b></label>
+                <!--<label for="password"><b>Password</b></label>-->
                 <input type="password" placeholder="Enter Password" name="password" >
 
-                <div class="login-button">
+                <div class="button">
                     <!-- <button type="submit">Sign Up</button> -->
-                    <button type="submit" id="login-btn">Login</button>
+                    <button type="submit" class="login-button" id="login-btn">Log In</button>
                 </div>
 
                 <div>
@@ -41,9 +42,9 @@
 
             </form>
 
-            <div class="signup-button">
+            <div class="button">
                 <!-- <button type="submit">Sign Up</button> -->
-                <button id="signup-btn">Sign Up</button>
+                <button id="signup-btn" class="signup-button">Sign Up</button>
             </div>
 
             <!-- Sign up form (hidden by default)-->
@@ -64,12 +65,15 @@
 
         
     </main>
+
+    <div class="center">
+        <footer id="footer">
+            &#169 Raygn LLC. All rights reserved.
+        </footer>
+    </div>
+
 </body>
 
-<div class="center">
-    <footer id="footer">
-        &#169 Raygn LLC. All rights reserved.
-    </footer>
-</div>
+
 
 </html>
