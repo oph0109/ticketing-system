@@ -23,17 +23,24 @@ export async function signupUserWithFormData(formData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(Object.fromEntries(formData)),
-  })
-    .then((response) => response.json())
-    .catch((error) => {
-      console.log("Error: " + error);
-      return error;
-    });
+  }).then((response) => {
+    return response.json();
+  });
+  // .catch((error) => {
+  //   console.log("Error: " + error);
+  //   return error;
+  // });
 
   return signupResult;
 }
 
+/**
+ * basically a copy of the above signup call, except we see if user exists with the given credentials
+ *  returns a json with status 200 if good, otherwise json with status 400 for bad request for some reason
+ */
+
 export async function loginUserWithFormData(formData) {
+  console.log("flow");
   const loginResult = await fetch(BASE_API_CALL + "/api/auth/login", {
     method: "POST",
     headers: {
@@ -41,9 +48,10 @@ export async function loginUserWithFormData(formData) {
     },
     body: JSON.stringify(Object.fromEntries(formData)),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      return response.json();
+    })
     .catch((error) => {
-      console.log("Error: " + error);
       return error;
     });
 

@@ -12,6 +12,7 @@ document.getElementById("login-signup-form").addEventListener("submit", (e) => {
 
   var formData = new FormData(e.target);
   formData.append("username", formData.get("email"));
+  console.log(Object.fromEntries(formData));
 
   loginUser(formData);
 });
@@ -30,12 +31,12 @@ async function loginUser(formData) {
 
   console.log("result: " + loginResult);
 
-  if (loginResult.status === 400) {
+  if (!loginResult) {
     loginMessage.textContent = "Invalid credentials faggot.";
     loginMessage.style.color = "red";
 
     return;
-  } else {
+  } else if (loginResult) {
     loginMessage.textContent = "Success! Redirecting...";
     loginMessage.style.color = "green";
 
@@ -43,7 +44,7 @@ async function loginUser(formData) {
       // Move to a new location or you can do something else
       //Also delays 3 seconds to make it look like its loading nicely
       window.location.href = "http://localhost:3000/?uuid=" + loginResult.uuid;
-    }, 10000000);
+    }, 1000000);
   }
 }
 

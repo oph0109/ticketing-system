@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import { searchForUserByUUID } from "./api/react-users.js";
+
 //signup and login page
 const LANDING_PAGE = "http://localhost:5502/index.html";
 
@@ -13,15 +15,15 @@ const LANDING_PAGE = "http://localhost:5502/index.html";
 function checkSession() {
   const USER_UUID = new URLSearchParams(window.location.search).get("uuid");
 
-  if (getCookie("user_id") !== null) {
+  if (getCookie("user_id") !== null && userExistsInDB(USER_UUID)) {
     console.log("cookie exists");
     sessionStorage.setItem("user_id", getCookie("user_id"));
-  } else if (USER_UUID === null) {
-//    window.location.href = LANDING_PAGE;
-  } else {
+  } else if (USER_UUID !== null) {
     console.log("user id found in params");
     setCookie("user_id", USER_UUID, 7);
     sessionStorage.setItem("user_id", USER_UUID);
+  } else {
+    window.location.href = LANDING_PAGE;
   }
 }
 
@@ -49,6 +51,14 @@ function getCookie(name) {
   // because unescape has been deprecated, replaced with decodeURI
   //return unescape(dc.substring(begin + prefix.length, end));
   return decodeURI(dc.substring(begin + prefix.length, end));
+}
+
+async function userExistsInDB(uuid) {
+  const searchResult = await searchForUserByUUID(uuid);
+
+  console.log(searchResult);
+
+  return searchResult.status === 200 ? true : false;
 }
 
 //checks for session data
