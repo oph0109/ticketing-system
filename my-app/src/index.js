@@ -17,7 +17,7 @@ function checkSession() {
     console.log("cookie exists");
     sessionStorage.setItem("user_id", getCookie("user_id"));
   } else if (USER_UUID === null) {
-    window.location.href = LANDING_PAGE;
+//    window.location.href = LANDING_PAGE;
   } else {
     console.log("user id found in params");
     setCookie("user_id", USER_UUID, 7);

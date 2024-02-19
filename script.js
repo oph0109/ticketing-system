@@ -5,11 +5,11 @@ const REACT_SITE = "http://localhost:3000";
 import signupSingleUserWithFormData from "./api/users.js";
 
 //attaches an eventlistener to the signup button
-document.getElementById("signup-form").addEventListener("submit", (e) => {
-  e.preventDefault();
+// document.getElementById("signup-form").addEventListener("submit", (e) => {
+//   e.preventDefault();
 
-  signupUser(new FormData(e.target));
-});
+//   signupUser(new FormData(e.target));
+// });
 
 async function signupUser(formData) {
   const signupResult = await signupSingleUserWithFormData(formData);
@@ -37,3 +37,31 @@ async function signupUser(formData) {
     }, 3000);
   }
 }
+
+// Get the modal
+const modal = document.getElementById('signup-modal');
+
+// Get the button that opens the modal
+const btn = document.getElementById("signup-btn");
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
