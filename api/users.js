@@ -47,13 +47,16 @@ export async function loginUserWithFormData(formData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(Object.fromEntries(formData)),
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .catch((error) => {
-      return error;
-    });
+  });
+  // .catch((error) => {
+  //   return error;
+  // });
+  // .then((response) => {
+  //   return response.json();
+  // });
+  if (loginResult.status === 200) {
+    return loginResult.json();
+  }
 
   return loginResult;
 }

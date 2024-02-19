@@ -29,22 +29,22 @@ async function loginUser(formData) {
   const loginResult = await loginUserWithFormData(formData);
   var loginMessage = document.getElementById("login-error");
 
-  console.log("result: " + loginResult);
+  console.log(loginResult);
 
-  if (!loginResult) {
+  if (loginResult !== undefined && loginResult.status === 400) {
     loginMessage.textContent = "Invalid credentials faggot.";
     loginMessage.style.color = "red";
 
     return;
-  } else if (loginResult) {
+  } else {
     loginMessage.textContent = "Success! Redirecting...";
     loginMessage.style.color = "green";
 
     window.setTimeout(function () {
       // Move to a new location or you can do something else
       //Also delays 3 seconds to make it look like its loading nicely
-      window.location.href = "http://localhost:3000/?uuid=" + loginResult.uuid;
-    }, 1000000);
+      window.location.href = "http://localhost:3000/?uuid=" + loginResult;
+    }, 3000);
   }
 }
 

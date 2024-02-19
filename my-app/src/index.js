@@ -8,14 +8,33 @@ import { searchForUserByUUID } from "./api/react-users.js";
 //signup and login page
 const LANDING_PAGE = "http://localhost:5502/index.html";
 
-//first, checks session cookie to see if value exists - if value is not null, we have a valid session already going on
-//second, checks incoming URL parameters for new user uuid value (meaning user came from signup/login page)
-//if either are null, we kick user back to landing page
-//if we have a session active, we set a
+/* Session Handler Logic
+First checks for a query parameter containing a valid uuid - if it finds one, this is prioritized
+as it means a user has just signed up or logged in - overwrites any current session data
+Second, if uuid is not found in url we check for a valid session cookie. If this is found, we let the user stay
+Third statement means user has not logged in or signed up recently so we boot them back to landing page */
 function checkSession() {
   const USER_UUID = new URLSearchParams(window.location.search).get("uuid");
 
-  if (getCookie("user_id") !== null && userExistsInDB(USER_UUID)) {
+  console.log(USER_UUID);
+
+  //SESSION HANDLER LOGIC
+  if (USER_UUID !== undefined && USER_UUID !== null) {
+    //user just logged in or signed up, create a cookie
+    setCookie("user_id", USER_UUID);
+    sessionStorage.setItem("user_id", USER_UUID);
+  } else if (
+    getCookie("user_id") !== null &&
+    userExistsInDB(getCookie("user_id"))
+  ) {
+    console.log("cookie exists!");
+    sessionStorage.setItem("user_id", getCookie("user_id"));
+  } else {
+    window.location.href = LANDING_PAGE;
+  }
+
+  //OLD SESSION HANDLER - OUTDATED - WAS SHIT
+  /* if (getCookie("user_id") !== undefined && userExistsInDB(USER_UUID)) {
     console.log("cookie exists");
     sessionStorage.setItem("user_id", getCookie("user_id"));
   } else if (USER_UUID !== null) {
@@ -24,7 +43,7 @@ function checkSession() {
     sessionStorage.setItem("user_id", USER_UUID);
   } else {
     window.location.href = LANDING_PAGE;
-  }
+  } */
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -36,6 +55,7 @@ function setCookie(cname, cvalue, exdays) {
 
 function getCookie(name) {
   var dc = document.cookie;
+  console.log(dc);
   var prefix = name + "=";
   var begin = dc.indexOf("; " + prefix);
   if (begin == -1) {
@@ -50,6 +70,7 @@ function getCookie(name) {
   }
   // because unescape has been deprecated, replaced with decodeURI
   //return unescape(dc.substring(begin + prefix.length, end));
+  console.log(decodeURI(dc.substring(begin + prefix.length, end)));
   return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
