@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,41 +8,75 @@
     <title>Ticketing System</title>
     <link rel="logo" href="my-app/src/images/Raygun_Logo.png" type="image/x-icon">
 </head>
+
 <body>
     <main>
         <div id="welcome-tags" class="center">
-            <h1>Welcome.</h1>
-            <h2>Please signup/login:</h2>
+            <h1>Raygn</h1>
+            <h2>Customized software for your business or personal needs.</h2>
         </div>
 
-        <div id="signup-form-container" class="center">
-            <form  id="signup-form" method="POST" action="" class="signup-form center">
-                <label for="name"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="name" required>
+        <div id="login-signup-form-container" class="center" >
+            <div>
+                <h3>Sign Up or Login</h3>
+            </div>
 
-                <label for="email"><b>Email</b></label>
-                <input type="email" placeholder="Enter Email" name="email" required>
+            <form  id="login-signup-form" method="POST" action="" class="login-signup-form center">
 
-                <label for="password"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <!--<label for="email"><b>Email</b></label>-->
+                <input type="email" placeholder="Enter Email" name="email" >
 
-                <div class="landing-buttons">
-                    <button type="submit">Sign Up</button>
-                    <button type="button" id="login">Login</button>
+                <!--<label for="password"><b>Password</b></label>-->
+                <input type="password" placeholder="Enter Password" name="password" >
+
+                <div class="button">
+                    <!-- <button type="submit">Sign Up</button> -->
+                    <button type="submit" class="login-button" id="login-btn">Log In</button>
                 </div>
+
+                <div>
+                    <h5>Don't Have an Account?</h5>
+                </div>
+
+
+
             </form>
 
-            <p id="signup-error" class="center"re></p>
+            <div class="button">
+                <!-- <button type="submit">Sign Up</button> -->
+                <button id="signup-btn" class="signup-button">Sign Up</button>
+            </div>
+
+            <!-- Sign up form (hidden by default)-->
+            <div id="signup-modal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h2>Sign Up</h2>
+                  <form id="signup-form">
+                    <input type="text" placeholder="Full name" name="name" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <input type="text" placeholder="Username" name="username" required>
+                    <input type="password" placeholder="Password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" required>
+                    <p id="signup-error"></p>
+                    <button type="submit">Sign Up</button>
+                  </form>
+                </div>
+              </div>
+
+            <p id="login-error" class="center"></p>
         </div>
 
         
     </main>
+
+    <div class="center">
+        <footer id="footer">
+            &#169 Raygn LLC. All rights reserved.
+        </footer>
+    </div>
+
 </body>
 
-<div class="center">
-    <footer id="footer">
-        &#169 Raygn LLC. All rights reserved.
-    </footer>
-</div>
+
 
 </html>

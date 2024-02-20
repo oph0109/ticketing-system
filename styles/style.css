@@ -18,9 +18,14 @@
 }
 
 body {
-    background: fixed;
-    background-image: linear-gradient(white 50%, #353333 105%);
-    /* color: whitesmoke; */
+    background-image: url('Background3.png');
+    background-repeat: no-repeat;
+    background-size: auto;
+
+}
+
+main {
+    display: flex;
 }
 
 #footer {
@@ -30,6 +35,7 @@ body {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
+    color: white;
 }
 
 .center {
@@ -40,59 +46,71 @@ body {
 
 h1 {
     font-family: 'lora-regular';
-    font-size: 80px;
+    font-style: italic;
+    font-size: 150px;
+    color: white;
+    text-shadow: 10px whitesmoke;
     /* border: 2px solid white; */
 }
 
 h2 {
     font-family: 'lora-regular';
     font-size: 25px;
+    color: white;
     /* border: 2px solid white; */
 }
 
-#signup-form-container {
-    width: 40%;
+h3{
+    font-size: 25px;
+    color: white;
+}
+
+#login-signup-form-container {
+    max-width: 25%;
     float: right;
     margin-right: 10%;
     /* margin-top: auto; */
-    /* border: 2px solid white; */
-    margin-top: 15%;
+    border: 0.5px solid white;
+    margin-top: 10%;
+    
+    border-radius: 2%;
+    padding: 20px;
+    width: 50%;
+    /* max-height: 100%; */
+    /* margin: auto; */
+    text-align: center;
+    /* border: 1px solid #DBF9B8; */
+    /* background-color: #92AFD7; */
+    box-shadow: 12px 12px 12px 12px white;
 }
 
 #welcome-tags {
-    width: 40%;
-    float: left;
-    margin-left: 10%;
-    margin-top: 15%;
-    /* border: 2px solid white; */
+    width: 50%;
+    /* float: left; */
+    /* margin-left: 10%; */
+    margin-top: 10%;
+    border-radius: 25px;
 }
 
-.signup-form {
-    border-radius: 2%;
-    padding: 40px;
-    width: 50%;
-    max-height: 100%;
-    margin: auto;
-    text-align: center;
-    /* border: 1px solid #DBF9B8; */
-    background-color: #92AFD7;
-    box-shadow: 7px 7px 7px;
-
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 form input {
-    width: 50%;
-    padding: 5px;
-    border: 1px solid black;
+    width: 60%;
+    padding: 20px;
+    margin: auto;
     margin-bottom: 30px;
-    /* margin-right: 30%; */
+    border-radius: 10px;
+    border: none;
 }
 
 form label {
-    background-color: #ffffff;
+    /*background-color: #ffffff;*/
     padding: 5px;
     border-radius: 5px;
-    margin-right: 25px;
+    margin: auto;
 }
 
 #signup-error {
@@ -101,3 +119,92 @@ form label {
     animation-fill-mode: forwards;
     padding-top: 20px;
 }
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+.login-button{
+font-family: 'lora-regular';
+font-weight: 100;
+font-size: 30px;
+color: #ffffff;
+background: linear-gradient(306deg, #f469a1 38%, #fcebb9 100%);
+padding: 10px 40px;
+border: solid white 0px;
+transition : 916ms;
+transform: translateY(0);
+flex-direction: row;
+align-items: center;
+text-align: center;
+cursor: pointer;
+}
+
+.login-button:hover{
+transition : 916ms;
+padding: 10px 50px;
+transform : translateY(-0px);
+background: linear-gradient(306deg, #f469a1 38%, #fcebb9 100%);
+color: #ffffff;
+border: none;
+}
+
+.signup-button{
+    font-family: 'lora-regular';
+    font-weight: 100;
+    font-size: 10px;
+    color: #ffffff;
+    background: linear-gradient(306deg, #f469a1 38%, #fcebb9 100%);
+    padding: 10px 20px;
+    border: solid white 0px;
+    transition : 916ms;
+    transform: translateY(0);
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    }
+    
+    .signup-button:hover{
+    transition : 916ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    background: linear-gradient(306deg, #f469a1 38%, #fcebb9 100%);
+    color: #ffffff;
+    border: none;
+    }
+
+
+    
