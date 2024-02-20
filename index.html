@@ -56,9 +56,9 @@
                     <input type="text" placeholder="Full name" name="name" required>
                     <input type="email" placeholder="Email" name="email" required>
                     <input type="text" placeholder="Username" name="username" required>
-                    <input type="password" placeholder="Password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$" required>
+                    <input type="password" placeholder="Password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}" required>
                     <p id="signup-error"></p>
-                    <button type="submit">Sign Up</button>
+                    <button type="submit" class="signup-button" id="modal-signup-button">Sign Up</button>
                   </form>
                 </div>
               </div>

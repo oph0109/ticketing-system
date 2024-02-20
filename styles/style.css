@@ -211,5 +211,9 @@ border: none;
     border: none;
     }
 
-
+.modal button {
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
     
