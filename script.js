@@ -55,7 +55,13 @@ async function signupUser(formData) {
   console.log(signupResult);
 
   //here we check the value of the response from the api call - User object is returned, otherwise we get 500 response
-  if (signupResult.status === 500) {
+  if (signupResult.status === 502) {
+    signupMessage.textContent = "Server is offline. Try again later.";
+    signupMessage.style.color = "red";
+
+    // Back out of function, let user try another username
+    return;
+  } else if (signupResult.status === 500) {
     signupMessage.textContent = "User already exists.";
     signupMessage.style.color = "red";
 

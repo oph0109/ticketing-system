@@ -23,13 +23,14 @@ export async function signupUserWithFormData(formData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(Object.fromEntries(formData)),
-  }).then((response) => {
-    return response.json();
-  });
-  // .catch((error) => {
-  //   console.log("Error: " + error);
-  //   return error;
-  // });
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.log("Error!");
+      return { status: 502 };
+    });
 
   return signupResult;
 }
