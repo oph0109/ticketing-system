@@ -31,10 +31,13 @@ async function loginUser(formData) {
 
   console.log(loginResult);
 
-  if (loginResult !== undefined && loginResult.status === 400) {
+  if (loginResult !== undefined && loginResult.status === 502) {
+    loginMessage.textContent = "Server is offline. Try again later.";
+    loginMessage.style.color = "red";
 
+    return;
+  } else if (loginResult !== undefined && loginResult.status === 400) {
     loginMessage.textContent = "Invalid credentials";
-
     loginMessage.style.color = "red";
 
     return;

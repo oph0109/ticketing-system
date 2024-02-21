@@ -48,10 +48,10 @@ export async function loginUserWithFormData(formData) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(Object.fromEntries(formData)),
+  })
+  .catch((error) => {
+    return {status: 502};
   });
-  // .catch((error) => {
-  //   return error;
-  // });
   // .then((response) => {
   //   return response.json();
   // });

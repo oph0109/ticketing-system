@@ -1,0 +1,30 @@
+.flex {
+    display: flex;
+}
+
+#main-nav-list {
+    flex-direction: row;
+    list-style-type: none;
+    float: left;
+}
+
+#profile-nav-bar {
+    flex-direction: row;
+    float: right;
+    list-style-type: none;
+}
+
+li {
+    margin-right: 10px;
+}
+
+li a {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+li img {
+
+}

@@ -1,16 +1,19 @@
 import logo from "./images/raygn.png";
 import "./App.css";
-import Button from "./UI Kit/Button.js";
+import MainNav from "./Components/MainNav.js";
+
+const HOME_PAGE = 'http://localhost:3000';
 
 function App() {
   return (
+    <>
+    <MainNav homePage={HOME_PAGE}/>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>Welcome to your Ticketing System.</p>
-        <Button class="signup-button">Sign Up</Button>
       </header>
     </div>
+    </>
   );
 }
 
