@@ -32,7 +32,9 @@ async function loginUser(formData) {
   console.log(loginResult);
 
   if (loginResult !== undefined && loginResult.status === 400) {
+
     loginMessage.textContent = "Invalid credentials";
+
     loginMessage.style.color = "red";
 
     return;
