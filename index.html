@@ -11,62 +11,68 @@
 
 <body>
     <main>
-        <div id="welcome-tags" class="center">
-            <h1>Raygn</h1>
-            <h2>Customized software for your business or personal needs.</h2>
+        <div class="container">
+
+            <div id="welcome-tags" class="left center">
+                <h1>Raygn</h1>
+                <h2>Customized software for your business or personal needs</h2>
+            </div>
+
+            <div id="form-container" class="right center" >
+                <div>
+                    <h3>Sign Up or Login</h3>
+                </div>
+
+                <form  id="login-signup-form" method="POST" action="" class="">
+
+                    <!--<label for="email"><b>Email</b></label>-->
+                    <div id="email-box">
+                        <input type="email" placeholder="Email" name="email" >
+                    </div>
+
+                    <!--<label for="password"><b>Password</b></label>-->
+                    <div id="password-box"> 
+                        <input type="password" placeholder="Password" name="password" >
+                    </div>
+
+                    <!--LOG IN BUTTON-->
+                    <div>
+                        <button type="submit" id="login-button" class="button">Log In</button>
+                    </div>
+                    <!----------------->
+
+                    <div>
+                        <h5>Don't Have an Account?</h5>
+                    </div>
+                </form>
+
+                        <!--SIGN UP BUTTON-->
+                            <div>
+                                <button type="submit" id="signup-button" class="button">Sign Up</button>
+                                    </div>
+                                    <!----------------->
+                                <p id="login-error" class="center"></p>
+                
+
+            </div>
         </div>
 
-        <div id="login-signup-form-container" class="center" >
-            <div>
-                <h3>Sign Up or Login</h3>
-            </div>
-
-            <form  id="login-signup-form" method="POST" action="" class="login-signup-form center">
-
-                <!--<label for="email"><b>Email</b></label>-->
-                <input type="email" placeholder="Enter Email" name="email" >
-
-                <!--<label for="password"><b>Password</b></label>-->
-                <input type="password" placeholder="Enter Password" name="password" >
-
-                <div class="button">
-                    <!-- <button type="submit">Sign Up</button> -->
-                    <button type="submit" class="login-button" id="login-btn">Log In</button>
-                </div>
-
-                <div>
-                    <h5>Don't Have an Account?</h5>
-                </div>
-
-
-
-            </form>
-
-            <div class="button">
-                <!-- <button type="submit">Sign Up</button> -->
-                <button id="signup-btn" class="signup-button">Sign Up</button>
-            </div>
-
-            <!-- Sign up form (hidden by default)-->
+        <!-- Sign up form (hidden by default)-->
             <div id="signup-modal" class="modal">
                 <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <h2>Sign Up</h2>
-                  <form id="signup-form">
-                    <input type="text" placeholder="Full name" name="name" required>
-                    <input type="email" placeholder="Email" name="email" required>
-                    <input type="text" placeholder="Username" name="username" required>
-                    <input type="password" placeholder="Password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}" required>
-                    <p id="signup-error"></p>
-                    <button type="submit" class="signup-button" id="modal-signup-button">Sign Up</button>
-                  </form>
+                    <span class="close">&times;</span>
+                    <h2>Sign Up</h2>
+                    <form id="signup-form">
+                        <input type="text" placeholder="Full name" name="name" required>
+                        <input type="email" placeholder="Email" name="email" required>
+                        <input type="text" placeholder="Username" name="username" required>
+                        <input type="password" placeholder="Password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}" required>
+                        <p id="signup-error"></p>
+                        <button type="submit" class="signup-button" id="modal-signup-button">Sign Up</button>
+                    </form>
                 </div>
-              </div>
-
-            <p id="login-error" class="center"></p>
-        </div>
-
-        
+            </div>
+ 
     </main>
 
     <div class="center">

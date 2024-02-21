@@ -32,7 +32,7 @@ async function loginUser(formData) {
   console.log(loginResult);
 
   if (loginResult !== undefined && loginResult.status === 400) {
-    loginMessage.textContent = "Invalid credentials faggot.";
+    loginMessage.textContent = "Invalid credentials";
     loginMessage.style.color = "red";
 
     return;
@@ -83,7 +83,7 @@ async function signupUser(formData) {
 const modal = document.getElementById("signup-modal");
 
 // Get the button that opens the modal
-const btn = document.getElementById("signup-btn");
+const btn = document.getElementById("signup-button");
 
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
