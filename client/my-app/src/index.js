@@ -83,7 +83,8 @@ async function userExistsInDB(uuid) {
 }
 
 //checks for session data
-checkSession();
+//  COMMENT THIS OUT WHEN TESTING LOCALLY 
+//checkSession();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

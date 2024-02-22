@@ -1,18 +1,40 @@
-import logo from "./images/raygn.png";
-import "./App.css";
+//Components import
 import MainNav from "./Components/MainNav.js";
+import Ticket from "./Components/Ticket.js";
 
-const HOME_PAGE = 'http://localhost:3000';
+//CSS import
+import "./App.css";
+
+//API import
+import returnTickets from "./api/react-tickets.js";
+
+//Hooks import
+import {useState} from "react";
+
+const HOME_PAGE = "http://localhost:3000";
+
+const ticketsFetch = await returnTickets();
+console.log(ticketsFetch);
 
 function App() {
+  console.log(ticketsFetch[0].ticketId);
+  const [tickets, setTickets] = useState(ticketsFetch);
+
+  function deleteTicket(id) {
+    setTickets(tickets => {
+      return tickets.filter(ticket => ticket.ticketId !== id);
+    })
+  }
+
   return (
     <>
-    <MainNav homePage={HOME_PAGE}/>
-    <div className="App">
-      <header className="App-header">
-        <p>Welcome to your Ticketing System.</p>
-      </header>
-    </div>
+      <MainNav homePage={HOME_PAGE} />
+
+      <div id="ticket-container">
+        {tickets.map((ticket, index) => (
+          <Ticket ticket={ticket} key={index} deleteTicket={deleteTicket}/>
+        ))}
+      </div>
     </>
   );
 }

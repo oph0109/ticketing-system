@@ -1,16 +1,19 @@
 import "../styles/components.css";
+import profileIcon from "../images/profile-icon-favicon.png";
 
 export default function MainNav({ homePage }) {
   return (
-    <nav id="main-nav-bar" className="nav">
-        <ul id="main-nav-list" className="flex">
-            <li><a href={homePage}>Home</a></li>
-            <li><a href={homePage}>Ticket Search</a></li>
-        </ul>
+    <>
+      <div id="main-nav-bar" className="nav flex">
+        <div id="main-nav-list" className="flex">
+          <a href={homePage}>Home</a>
+          <a href={homePage}>Ticket Search</a>
+        </div>
 
-        <ul id="profile-nav-bar">
-            <li><img src="./images/profile-icon.png" alt="Profile" width="40px" height="40px"/></li>
-        </ul>
-    </nav>
+        <div id="profile-nav-bar" className="flex">
+          <img src={profileIcon} alt="Profile" width="40px" height="40px" />
+        </div>
+      </div>
+    </>
   );
 }

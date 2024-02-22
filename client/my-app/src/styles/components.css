@@ -1,30 +1,61 @@
+body {
+    --nav-background-color: #dddddd;
+}
+
 .flex {
     display: flex;
 }
 
+#main-nav-bar {
+    background-color: var(--nav-background-color);
+    border: 1px solid black;
+    width: 100%;
+    justify-content: space-between;
+    padding: 5px;
+}
+
 #main-nav-list {
+    width: 20%;
     flex-direction: row;
-    list-style-type: none;
     float: left;
+    justify-content: center;
+    align-items: center;
+
 }
 
 #profile-nav-bar {
-    flex-direction: row;
-    float: right;
-    list-style-type: none;
+    margin-left: auto;
+    margin-right: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
-li {
-    margin-right: 10px;
-}
+#main-nav-list a {
 
-li a {
-    background-color: black;
-    color: white;
+    margin-left: 20px;
+    background-color: var(--nav-background-color);
+    color: black;
+    border: solid 5px black;
     padding: 10px;
     border-radius: 10px;
+    text-decoration: none;
 }
 
-li img {
+img {
+    border: solid 5px black;
+    border-radius: 50%;
+}
 
+.ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eeeeee;
+    min-width: 100px;
+    border: 1px solid black;
+}
+
+.ticket-title {
+    font-size: 20px;
+    font-weight: bold;
 }
