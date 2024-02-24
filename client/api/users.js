@@ -1,6 +1,6 @@
 //API controller js file for getting, creating, editing user information
 //ENDPONT: /api/users
-const BASE_API_CALL = "http://localhost:8080";
+const BASE_API_CALL = "http://10.0.0.151:8080";
 
 //returns array of json objects representing users - NOT USED
 export default async function getUsers() {
