@@ -13,17 +13,21 @@ import {useState} from "react";
 
 const HOME_PAGE = "http://localhost:3000";
 
-const ticketsFetch = await returnTickets();
+const ticketsFetch = await returnTickets().values;
 console.log(ticketsFetch);
 
 function App() {
-  console.log(ticketsFetch[0].ticketId);
+  //console.log(ticketsFetch[0].ticketId);
   const [tickets, setTickets] = useState(ticketsFetch);
 
   function deleteTicket(id) {
     setTickets(tickets => {
       return tickets.filter(ticket => ticket.ticketId !== id);
     })
+  }
+
+  if (tickets === undefined) {
+    return <p>No tickets found.</p>
   }
 
   return (
