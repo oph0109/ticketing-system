@@ -20,7 +20,7 @@ public class TicketingSystemApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOriginPatterns("http://127.0.0.1:5502").allowCredentials(true);
+				registry.addMapping("/**").allowedMethods("*");
 			}
 		};
 	}
