@@ -16,14 +16,16 @@ public class TicketingSystemApplication {
 
 
 	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedMethods("*");
-			}
-		};
-	}
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedMethods("*")
+                        .allowedOriginPatterns("https://*.domain.com");
+            }
+        };
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(TicketingSystemApplication.class, args);
