@@ -1,6 +1,6 @@
 //Components import
 import MainNav from "./Components/MainNav.js";
-import Ticket from "./Components/Ticket.js";
+import TicketList from "./Components/TicketList.js";
 
 //CSS import
 import "./App.css";
@@ -20,9 +20,9 @@ function App() {
   //console.log(ticketsFetch[0].ticketId);
   const [tickets, setTickets] = useState(ticketsFetch);
 
-  function deleteTicket(id) {
+  function deleteTicket(uuid) {
     setTickets(tickets => {
-      return tickets.filter(ticket => ticket.ticketId !== id);
+      return tickets.filter(ticket => ticket.uuid !== uuid);
     })
   }
 
@@ -34,11 +34,7 @@ function App() {
     <>
       <MainNav homePage={HOME_PAGE} />
 
-      <div id="ticket-container">
-        {tickets.map((ticket, index) => (
-          <Ticket ticket={ticket} key={index} deleteTicket={deleteTicket}/>
-        ))}
-      </div>
+      <TicketList tickets={tickets} deleteTicket={deleteTicket}/>
     </>
   );
 }

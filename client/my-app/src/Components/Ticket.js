@@ -8,7 +8,7 @@ export default function Ticket({ticket, deleteTicket}) {
 
             <div className="ticket-lower-buttons">
                 <button>Escalate</button>
-                <button onClick={() => deleteTicket(ticket.ticketId)}>Delete Ticket</button>
+                <button onClick={() => deleteTicket(ticket.uuid)}>Delete Ticket</button>
             </div>
         </div>
     );

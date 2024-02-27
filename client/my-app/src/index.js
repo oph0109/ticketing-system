@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { searchForUserByUUID } from "./api/react-users.js";
+import searchForUserByUUID from "./api/react-users.js";
 
 //signup and login page
-const LANDING_PAGE = "http://localhost:5502/index.html";
+export const LANDING_PAGE = "http://localhost:5502/client/index.html";
 
 /* Session Handler Logic
 First checks for a query parameter containing a valid uuid - if it finds one, this is prioritized
@@ -44,6 +44,21 @@ function checkSession() {
   } else {
     window.location.href = LANDING_PAGE;
   } */
+
+  localStorage.setItem('logged-in', true);
+}
+
+export function signOutUser() {
+  sessionStorage.removeItem('user_id');
+  deleteCookie('user_id');
+
+  localStorage.setItem('logged-in', false);
+
+  //window.location.reload();
+}
+
+function deleteCookie(name) {
+  document.cookie = name+'=; Max-Age=-99999999;';  
 }
 
 function setCookie(cname, cvalue, exdays) {

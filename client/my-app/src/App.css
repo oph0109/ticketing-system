@@ -1,8 +1,9 @@
 body {
-  background-color: #eeeee7;
-}
-
-#ticket-container {
-  display: flex;
-  justify-content: space-around;
+  max-width: 100%;
+  overflow-x: hidden;
+  height: 100vh;
+  background-image: url("./images/Background3.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
