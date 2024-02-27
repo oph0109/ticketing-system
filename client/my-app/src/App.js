@@ -13,7 +13,7 @@ import {useState} from "react";
 
 const HOME_PAGE = "http://localhost:3000";
 
-const ticketsFetch = await returnTickets().values;
+const ticketsFetch = await returnTickets();
 console.log(ticketsFetch);
 
 function App() {

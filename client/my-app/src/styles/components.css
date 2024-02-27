@@ -12,6 +12,7 @@ body {
     width: 100%;
     justify-content: space-between;
     padding: 5px;
+    margin: 0 auto;
 }
 
 #main-nav-list {
