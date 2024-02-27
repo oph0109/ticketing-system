@@ -22,7 +22,7 @@ public class TicketingSystemApplication {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedMethods("*")
-                        .allowedOriginPatterns("*");
+                        .allowedOriginPatterns("http://10.0.0.103:3000");
             }
         };
     }
