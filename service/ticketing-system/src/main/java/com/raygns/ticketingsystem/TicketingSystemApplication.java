@@ -14,6 +14,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EntityScan("com.raygns.ticketingsystem.entities")
 public class TicketingSystemApplication {
 
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedMethods("*")
+						.allowedOriginPatterns("*");
+			}
+		};
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(TicketingSystemApplication.class, args);
 	}

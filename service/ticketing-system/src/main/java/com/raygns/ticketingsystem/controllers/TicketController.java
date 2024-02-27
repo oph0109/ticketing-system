@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/tickets")
 public class TicketController {
 
