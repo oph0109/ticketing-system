@@ -3,17 +3,18 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import searchForUserByUUID from "./api/react-users.js";
+import {searchForUserByUUID} from "./api/react-users.js";
 
 //signup and login page
 export const LANDING_PAGE = "http://localhost:5502/client/index.html";
+export const HOME_PAGE = "http://localhost:3000";
 
 /* Session Handler Logic
 First checks for a query parameter containing a valid uuid - if it finds one, this is prioritized
 as it means a user has just signed up or logged in - overwrites any current session data
 Second, if uuid is not found in url we check for a valid session cookie. If this is found, we let the user stay
 Third statement means user has not logged in or signed up recently so we boot them back to landing page */
-function checkSession() {
+export function checkSession() {
   const USER_UUID = new URLSearchParams(window.location.search).get("uuid");
 
   console.log(USER_UUID);
@@ -46,9 +47,11 @@ function checkSession() {
   } */
 
   localStorage.setItem('logged-in', true);
+  //window.location.href = process.env.HOME_PAGE;
 }
 
 export function signOutUser() {
+  console.log("here?");
   sessionStorage.removeItem('user_id');
   deleteCookie('user_id');
 
@@ -70,7 +73,7 @@ function setCookie(cname, cvalue, exdays) {
 
 function getCookie(name) {
   var dc = document.cookie;
-  console.log(dc);
+  //console.log(dc);
   var prefix = name + "=";
   var begin = dc.indexOf("; " + prefix);
   if (begin === -1) {
@@ -85,11 +88,12 @@ function getCookie(name) {
   }
   // because unescape has been deprecated, replaced with decodeURI
   //return unescape(dc.substring(begin + prefix.length, end));
-  console.log(decodeURI(dc.substring(begin + prefix.length, end)));
+  //console.log(decodeURI(dc.substring(begin + prefix.length, end)));
   return decodeURI(dc.substring(begin + prefix.length, end));
 }
 
 async function userExistsInDB(uuid) {
+  console.log(uuid);
   const searchResult = await searchForUserByUUID(uuid);
 
   console.log(searchResult);
@@ -99,7 +103,7 @@ async function userExistsInDB(uuid) {
 
 //checks for session data
 //  COMMENT THIS OUT WHEN TESTING LOCALLY 
-checkSession();
+//checkSession();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
