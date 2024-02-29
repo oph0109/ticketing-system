@@ -3,7 +3,7 @@ import "../styles/components.css";
 import profileIcon from "../images/profile-icon-favicon.png";
 
 //API import
-import searchForUserByUUID from "../api/react-users.js";
+import {searchForUserByUUID} from "../api/react-users.js";
 import {signOutUser, checkSession} from "../index.js";
 
 //Variable import
@@ -11,15 +11,17 @@ import {LANDING_PAGE} from "../index.js";
 
 checkSession();
 
-let userInfo = "Guest user";
+let userInfo = {name: "Guest user"};
 
 if (sessionStorage.getItem("user_id") !== undefined) {
   userInfo = await searchForUserByUUID(sessionStorage.getItem("user_id"));
 }
 
+console.log("userInfo");
+console.log(userInfo);
+
 export default function MainNav({ homePage }) {
   return (
-
       <div id="main-nav-bar" className="nav flex">
         <div id="main-nav-list" className="flex">
           <a href={homePage}>Home</a>

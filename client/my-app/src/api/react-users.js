@@ -1,19 +1,23 @@
-const BASE_API_CALL = "http://10.0.0.151:8080";
+const BASE_API_CALL = process.env.REACT_APP_BASE_API_CALL;
+console.log(BASE_API_CALL);
 
-export async function searchForUserByUUID(uuid) {
+async function searchForUserByUUID(uuid) {
   console.log("uuid: " + uuid);
+  console.log(BASE_API_CALL);
 
   const searchResult = await fetch(BASE_API_CALL + `/api/users/${uuid}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((response) => response.json());
+  })
+  .then(response => response.json());
 
   console.log("result: ");
-  return searchResult;
+  console.log(await searchResult);
+  return await searchResult;
 }
 
-export default function() {
-  return 0;
+module.exports = {
+  searchForUserByUUID
 }

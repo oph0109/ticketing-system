@@ -6,8 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import {searchForUserByUUID} from "./api/react-users.js";
 
 //signup and login page
-export const LANDING_PAGE = "http://localhost:5502/client/index.html";
-export const HOME_PAGE = "http://localhost:3000";
+export const LANDING_PAGE = process.env.REACT_APP_LANDING_PAGE;
+export const HOME_PAGE = process.env.REACT_APP_HOME_PAGE;
 
 /* Session Handler Logic
 First checks for a query parameter containing a valid uuid - if it finds one, this is prioritized
@@ -15,6 +15,8 @@ as it means a user has just signed up or logged in - overwrites any current sess
 Second, if uuid is not found in url we check for a valid session cookie. If this is found, we let the user stay
 Third statement means user has not logged in or signed up recently so we boot them back to landing page */
 export function checkSession() {
+  const LANDING_PAGE = process.env.REACT_APP_LANDING_PAGE;
+
   const USER_UUID = new URLSearchParams(window.location.search).get("uuid");
 
   console.log(USER_UUID);
@@ -31,6 +33,7 @@ export function checkSession() {
     console.log("cookie exists!");
     sessionStorage.setItem("user_id", getCookie("user_id"));
   } else {
+    console.log("here");
     window.location.href = LANDING_PAGE;
   }
 
@@ -57,6 +60,7 @@ export function signOutUser() {
 
   localStorage.setItem('logged-in', false);
 
+  window.location.href = LANDING_PAGE;
   //window.location.reload();
 }
 
@@ -93,12 +97,10 @@ function getCookie(name) {
 }
 
 async function userExistsInDB(uuid) {
-  console.log(uuid);
-  const searchResult = await searchForUserByUUID(uuid);
+  console.log("rabbit hole");
+  const result = await searchForUserByUUID(uuid);
 
-  console.log(searchResult);
-
-  return searchResult.status === 200 ? true : false;
+  return result.status === 200 ? true : false;
 }
 
 //checks for session data
