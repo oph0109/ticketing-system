@@ -3,7 +3,7 @@ import "../styles/components.css";
 import profileIcon from "../images/profile-icon-favicon.png";
 
 //API import
-import {searchForUserByUUID} from "../api/react-users.js";
+import {searchForUserByUUID} from "../api/react-users.jsx";
 import {signOutUser, checkSession} from "../index.js";
 
 //Variable import

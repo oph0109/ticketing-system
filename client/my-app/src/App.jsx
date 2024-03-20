@@ -1,12 +1,12 @@
 //Components import
-import MainNav from "./Components/MainNav.js";
-import TicketList from "./Components/TicketList.js";
+import MainNav from "./Components/MainNav.jsx";
+import TicketList from "./Components/TicketList.jsx";
 
 //CSS import
 import "./App.css";
 
 //API import
-import returnTickets from "./api/react-tickets.js";
+import returnTickets from "./api/react-tickets.jsx";
 
 //Hooks import
 import {useState} from "react";
