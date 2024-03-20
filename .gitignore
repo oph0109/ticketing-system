@@ -1,2 +1,3 @@
 #ignore giant node modules folder - package-lock.json already contains this info
 node_modules
+.env

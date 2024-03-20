@@ -14,7 +14,19 @@ document.getElementById("login-signup-form").addEventListener("submit", (e) => {
   formData.append("username", formData.get("email"));
   console.log(Object.fromEntries(formData));
 
-  loginUser(formData);
+  const loginErrorMessage = document.getElementById('login-error');
+  loginErrorMessage.textContent = "";
+
+  const loading_gif = document.createElement('img');
+  loading_gif.src = "./styles/loading-gif.gif";
+  loading_gif.style.width = "100px";
+  loading_gif.style.height = "100px";
+
+  loginErrorMessage.appendChild(loading_gif);
+
+  setTimeout(function() {
+    loginUser(formData);
+  }, 2000);
 });
 
 //attaches an eventlistener to signup button

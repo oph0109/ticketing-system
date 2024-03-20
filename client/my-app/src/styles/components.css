@@ -1,5 +1,10 @@
+* {
+    font-family: 'Helvetica';
+    font-style: italic;
+}
+
 body {
-    --nav-background-color: #dddddd;
+    --nav-background-color: white;
 }
 
 .flex {
@@ -9,10 +14,9 @@ body {
 #main-nav-bar {
     background-color: var(--nav-background-color);
     border: 1px solid black;
-    width: 100%;
     justify-content: space-between;
     padding: 5px;
-    margin: 0 auto;
+    opacity: 80%;
 }
 
 #main-nav-list {
@@ -42,6 +46,11 @@ body {
     text-decoration: none;
 }
 
+#profile-nav-bar span {
+    margin-right: 20px;
+    opacity: 75%;
+}
+
 img {
     border: solid 5px black;
     border-radius: 50%;
@@ -54,9 +63,22 @@ img {
     background-color: #eeeeee;
     min-width: 100px;
     border: 1px solid black;
+    width: 15rem;
+    opacity: 80%;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 .ticket-title {
     font-size: 20px;
     font-weight: bold;
+}
+
+#ticket-container {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
