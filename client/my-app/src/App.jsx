@@ -6,19 +6,26 @@ import TicketList from "./Components/TicketList.jsx";
 import "./App.css";
 
 //API import
-import returnTickets from "./api/react-tickets.jsx";
+import returnTickets from "./api/react-tickets.js";
 
 //Hooks import
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const HOME_PAGE = "http://localhost:3000";
 
-const ticketsFetch = await returnTickets();
-console.log(ticketsFetch);
-
 function App() {
-  //console.log(ticketsFetch[0].ticketId);
-  const [tickets, setTickets] = useState(ticketsFetch);
+  //OLD --- const [tickets, setTickets] = useState(ticketsFetch);
+  useEffect(() => {
+    getTickets();
+  }, []);
+
+  const[tickets, setTickets] = useState([]);
+
+  async function getTickets() {
+    const ticketsFetch = await returnTickets();
+    setTickets(ticketsFetch);
+    console.log(ticketsFetch);
+  }
 
   function deleteTicket(uuid) {
     setTickets(tickets => {

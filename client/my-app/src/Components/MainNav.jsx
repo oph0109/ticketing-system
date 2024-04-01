@@ -3,13 +3,13 @@ import "../styles/components.css";
 import profileIcon from "../images/profile-icon-favicon.png";
 
 //API import
-import {searchForUserByUUID} from "../api/react-users.jsx";
+import {searchForUserByUUID} from "../api/react-users.js";
 import {signOutUser, checkSession} from "../index.js";
 
 //Variable import
 import {LANDING_PAGE} from "../index.js";
 
-checkSession();
+//checkSession();
 
 let userInfo = {name: "Guest user"};
 

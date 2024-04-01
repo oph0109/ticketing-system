@@ -14,8 +14,8 @@ async function searchForUserByUUID(uuid) {
   .then(response => response.json());
 
   console.log("result: ");
-  console.log(await searchResult);
-  return await searchResult;
+  console.log(searchResult);
+  return searchResult;
 }
 
 module.exports = {
