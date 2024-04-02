@@ -148,6 +148,7 @@ input{
 /* Modal styles */
 .modal {
     position: fixed;
+    display: none;
     z-index: 1;
     left: 0;
     top: 0;

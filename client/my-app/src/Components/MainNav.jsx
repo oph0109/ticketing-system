@@ -9,11 +9,16 @@ import {signOutUser} from "../index.js";
 //Variable import
 import {LANDING_PAGE} from "../index.js";
 
-//checkSession();
+//React import
+import {useState, useEffect} from 'react';
+
+// checkSession();
 
 let userInfo = {name: "Guest user"};
 
-if (sessionStorage.getItem("user_id") !== null) {
+console.log("user id: " + sessionStorage.getItem("user_id"));
+
+if (sessionStorage.getItem("user_id") !== null && sessionStorage.getItem("user_id") !== undefined) {
   userInfo = await searchForUserByUUID(sessionStorage.getItem("user_id"));
 }
 
@@ -21,6 +26,16 @@ console.log("userInfo");
 console.log(userInfo);
 
 export default function MainNav({ homePage }) {
+  // const [signedInUser, setSignedInUser] = useState({});
+
+  // useEffect(async () => {
+  //   if (sessionStorage.getItem("user_id") !== null) {
+  //     setSignedInUser(await searchForUserByUUID(sessionStorage.getItem("user_id")).name);
+  //   } else {
+
+  //   }
+  // }, [])
+
   return (
       <div id="main-nav-bar" className="nav flex">
         <div id="main-nav-list" className="flex">

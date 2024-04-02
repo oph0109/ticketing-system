@@ -105,7 +105,7 @@ async function userExistsInDB(uuid) {
 
 //checks for session data
 //  COMMENT THIS OUT WHEN TESTING LOCALLY 
-//checkSession();
+checkSession();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
