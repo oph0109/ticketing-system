@@ -33,6 +33,12 @@ export default function TicketList() {
 
   return (
     <div id="ticket-container">
+      <div className="ticket-container-header">
+        <h2>
+          All Tickets
+        </h2>
+      </div>
+
       {tickets.map((ticket, index) => (
         <Ticket ticket={ticket} key={index} deleteTicket={deleteTicket} />
       ))}
