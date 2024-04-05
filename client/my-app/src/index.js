@@ -15,7 +15,7 @@ as it means a user has just signed up or logged in - overwrites any current sess
 Second, if uuid is not found in url we check for a valid session cookie. If this is found, we let the user stay
 Third statement means user has not logged in or signed up recently so we boot them back to landing page */
 export function checkSession() {
-  const LANDING_PAGE = process.env.REACT_APP_LANDING_PAGE;
+  // const LANDING_PAGE = process.env.REACT_APP_LANDING_PAGE;
 
   const USER_UUID = new URLSearchParams(window.location.search).get("uuid");
 
@@ -34,7 +34,7 @@ export function checkSession() {
     sessionStorage.setItem("user_id", getCookie("user_id"));
   } else {
     console.log("here");
-    window.location.href = LANDING_PAGE;
+    // window.location.href = LANDING_PAGE;
   }
 
   //OLD SESSION HANDLER - OUTDATED - WAS SHIT
@@ -105,7 +105,7 @@ async function userExistsInDB(uuid) {
 
 //checks for session data
 //  COMMENT THIS OUT WHEN TESTING LOCALLY 
-checkSession();
+// checkSession();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
