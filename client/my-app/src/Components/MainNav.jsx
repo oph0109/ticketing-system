@@ -14,22 +14,18 @@ import {useState, useEffect, useRef} from 'react';
 
 export default function MainNav({ homePage }) {
   const [signedInUser, setSignedInUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const userRole = useRef('');
 
-  // useEffect(async () => {
-  //   if (sessionStorage.getItem("user_id") !== null) {
-  //     setSignedInUser(await searchForUserByUUID(sessionStorage.getItem("user_id")).name);
-  //   } else {
-
-  //   }
-  // }, [])
+  useEffect(() => {
+    setIsLoggedIn(sessionStorage.getItem('logged-in'));
+    console.log(isLoggedIn);
+  }, [signedInUser, isLoggedIn])
 
   useEffect(() => {
     checkSession();
 
     async function getUser() {
-      
-
       let userInfo = {name: "Guest user"};
   
       if (sessionStorage.getItem("user_id") !== null && sessionStorage.getItem("user_id") !== undefined) {
@@ -65,7 +61,7 @@ export default function MainNav({ homePage }) {
 
         <div id="profile-nav-bar" className="flex">
           <span id="profile-name-span"><i>{signedInUser.name}</i></span>
-          <span id="login-redirect"><a href="/#" onClick={() => {localStorage.getItem('logged-in') ? signOutUser() : window.location.href = LANDING_PAGE}}>{localStorage.getItem('logged-in') ? 'Sign out' : 'Log in'}</a></span>
+          <span id="login-redirect"><a href="/#" onClick={() => {isLoggedIn ? signOutUser() : window.location.href = LANDING_PAGE}}>{isLoggedIn ? 'Sign out' : 'Log in'}</a></span>
           <img src={profileIcon} alt="Profile" width="40px" height="40px" />
         </div>
       </div>

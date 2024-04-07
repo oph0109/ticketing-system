@@ -26,12 +26,14 @@ export function checkSession() {
     //user just logged in or signed up, create a cookie
     setCookie("user_id", USER_UUID);
     sessionStorage.setItem("user_id", USER_UUID);
+    sessionStorage.setItem("logged-in", true);
   } else if (
     getCookie("user_id") !== null &&
     userExistsInDB(getCookie("user_id"))
   ) {
     console.log("cookie exists!");
     sessionStorage.setItem("user_id", getCookie("user_id"));
+    sessionStorage.setItem("logged-in", true);
   } else {
     console.log("here");
     // window.location.href = LANDING_PAGE;
@@ -49,7 +51,7 @@ export function checkSession() {
     window.location.href = LANDING_PAGE;
   } */
 
-  localStorage.setItem('logged-in', true);
+  // sessionStorage.setItem('logged-in', true);
   //window.location.href = process.env.HOME_PAGE;
 }
 
@@ -58,7 +60,7 @@ export function signOutUser() {
   sessionStorage.removeItem('user_id');
   deleteCookie('user_id');
 
-  localStorage.setItem('logged-in', false);
+  sessionStorage.setItem('logged-in', false);
 
   window.location.href = LANDING_PAGE;
   //window.location.reload();
