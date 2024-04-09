@@ -26,6 +26,10 @@ img {
 #main-nav-list {
     width: 20%;
     align-items: center;
+    border: 1px solid black;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
 }
 
 #profile-nav-bar {

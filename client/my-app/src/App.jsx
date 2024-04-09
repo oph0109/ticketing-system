@@ -6,16 +6,21 @@ import TicketList from "./Components/TicketList.jsx";
 import "./App.css";
 
 //React import
-import React from "react";
+import React, {useState} from "react";
 
 const HOME_PAGE = "http://localhost:3000";
 
 
 function App() {
-  //OLD --- const [tickets, setTickets] = useState(ticketsFetch);
+  const [userLoggingIn, setUserLoggingIn] = useState(false);
+
+  function toggleSetUserLoggingIn() {
+    setUserLoggingIn(true);
+  }
+
   return (
     <>
-      <MainNav homePage={HOME_PAGE} />
+      <MainNav homePage={HOME_PAGE} toggleForm={toggleSetUserLoggingIn}/>
 
       <TicketList />
     </>
