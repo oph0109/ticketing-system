@@ -46,6 +46,17 @@ img {
     font-weight: bold;
 }
 
+.login-signup-button {
+    margin-left: 2rem;
+    /* background-color: var(--nav-background-color); */
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 #profile-nav-bar span {
     margin-right: 20px;
     opacity: 75%;

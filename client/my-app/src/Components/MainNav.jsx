@@ -18,11 +18,6 @@ export default function MainNav({ homePage }) {
   const userRole = useRef('');
 
   useEffect(() => {
-    setIsLoggedIn(sessionStorage.getItem('logged-in'));
-    console.log(isLoggedIn);
-  }, [signedInUser, isLoggedIn])
-
-  useEffect(() => {
     checkSession();
 
     async function getUser() {
@@ -37,6 +32,14 @@ export default function MainNav({ homePage }) {
 
     getUser();
   }, [])
+  
+  useEffect(() => {
+    console.log('what the fuck is this value ' + sessionStorage.getItem('logged-in'));
+    let boolLoggedIn = sessionStorage.getItem('logged-in') === "true";
+    console.log(boolLoggedIn);
+    setIsLoggedIn(boolLoggedIn);
+    console.log('set logged in state to ' + isLoggedIn);
+  }, [isLoggedIn])
 
   useEffect(() => {
     function setUserRole() {
@@ -60,8 +63,15 @@ export default function MainNav({ homePage }) {
         </div>
 
         <div id="profile-nav-bar" className="flex">
-          <span id="profile-name-span"><i>{signedInUser.name}</i></span>
-          <span id="login-redirect"><a href="/#" onClick={() => {isLoggedIn ? signOutUser() : window.location.href = LANDING_PAGE}}>{isLoggedIn ? 'Sign out' : 'Log in'}</a></span>
+          <span id="profile-name-span"><i>{isLoggedIn ? signedInUser.name : "Guest user"}</i></span>
+          {/* OLD --- <span id="login-redirect"><a href="/#" onClick={() => {isLoggedIn ? signOutUser() : window.location.href = LANDING_PAGE}}>{isLoggedIn ? 'Sign out' : 'Log in'}</a></span> */}
+          <span id="login-redirect">
+            {console.log("loggedin?" + isLoggedIn)}
+            {isLoggedIn ? <button className="login-signup-button" onClick={() => {
+              signOutUser()
+              setIsLoggedIn(false);
+            }}>Sign out</button> : <button className="login-signup-button" onClick={() => window.location.href=LANDING_PAGE}>Log in</button>}
+          </span>
           <img src={profileIcon} alt="Profile" width="40px" height="40px" />
         </div>
       </div>

@@ -21,6 +21,7 @@ document.getElementById("login-signup-form").addEventListener("submit", (e) => {
   loading_gif.src = "./styles/loading-gif.gif";
   loading_gif.style.width = "100px";
   loading_gif.style.height = "100px";
+  loading_gif.style.position = "absolute";
 
   loginErrorMessage.appendChild(loading_gif);
 

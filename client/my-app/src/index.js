@@ -62,7 +62,7 @@ export function signOutUser() {
 
   sessionStorage.setItem('logged-in', false);
 
-  window.location.href = LANDING_PAGE;
+  // window.location.href = LANDING_PAGE;
   //window.location.reload();
 }
 
